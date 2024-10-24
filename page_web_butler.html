@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choisir une version</title>
+</head>
+<body>
+    <h1>Bienvenue !</h1>
+    <p>Veuillez choisir la version de l'application :</p>
+
+    <!-- Lite Version -->
+    <button onclick="showLite()">Version Lite</button>
+    
+    <!-- Normal Version -->
+    <a id="normalVersionLink">
+        <button>Version Normale</button>
+    </a>
+
+    <div id="liteContent" style="display:none;">
+        <h2 id="machineIDText">Hello, je suis MachineID: </h2>
+    </div>
+
+    <script>
+        // 获取URL中的MachineID参数
+        function getQueryParam(param) {
+            let urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // 显示Lite内容
+        function showLite() {
+            var machineID = getQueryParam("MachineID");
+            document.getElementById("machineIDText").innerHTML = "Hello, je suis MachineID: " + machineID;
+            document.getElementById("liteContent").style.display = "block";
+        }
+
+        // 动态设置Normal版本的链接
+        window.onload = function() {
+            var machineID = getQueryParam("MachineID");
+            document.getElementById("normalVersionLink").href = "https://apps.powerapps.com/play/1c66268e-c967-4e77-82e1-1e303906f884?MachineID=" + machineID;
+        }
+    </script>
+</body>
+</html>
