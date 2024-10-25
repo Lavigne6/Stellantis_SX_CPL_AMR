@@ -12,13 +12,16 @@
     <!-- Lite Version -->
     <button onclick="showLite()">Version Lite</button>
 
-    <!-- Normal Version -->
-    <a id="normalVersionLink">
-        <button>Version Normale</button>
-    </a>
+   <!-- Normal Version (password protected) -->
+    <button onclick="showPasswordPrompt()">Version Normale</button>
 
-    <div id="liteContent" style="display:none;">
-        <h2 id="machineIDText">Hello, je suis MachineID: </h2>
+    <!-- Password input (hidden by default) -->
+    <div id="passwordPrompt" style="display:none;">
+        <p>Entrez le mot de passe pour accéder à la version normale :</p>
+        <input type="password" id="passwordInput" placeholder="Mot de passe">
+        <button onclick="validatePassword()">Valider</button>
+        <p id="passwordError" style="color:red; display:none;">Mot de passe incorrect</p>
+    </div>
 
         <!-- Insérer ici le texte des images -->
         <h3>Je suis un membre des AMRs Butlers du Stellantis Sochaux! Enchanté(e)!</h3>
