@@ -35,7 +35,7 @@
 
         <h3>Zones de déplacement</h3>
         <p>Nous roulons sur les MV1/2/3/4/5, HC1 + toutes les zones de kit, jusqu'au TK!</p>
-        <p>Distance maximale: 600m!</p>
+        <p>Distance maximale: 1km!</p>
 
         <h3>Contact</h3>
         <p><strong>Chef de projet :</strong></p>
@@ -54,11 +54,34 @@
         }
 
         // 显示Lite内容并插入MachineID
-        function showLite() {
-            var machineID = getQueryParam("MachineID");
-            document.getElementById("machineIDText").innerHTML = "Hello, je suis MachineID: " + machineID;
-            document.getElementById("liteContent").style.display = "block";
-        }
+function showLite() {
+    var machineID = getQueryParam("MachineID");
+    var machineNames = {
+        35: "16",
+        40: "Adil",
+        42: "Lilouch",
+        57: "Saoudi",
+        58: "Emilie",
+        66: "Haiquan",
+        70: "Stéphane",
+        81: "Merguez",
+        83: "Mickael",
+        88: "Guofeng",
+        89: "Grincheu",
+        98: "Rogerio",
+        100: "Simon",
+        102: "Le magicien",
+        121: "Caro",
+        128: "Sam",
+        142: "Bayram",
+        164: "Mickey"
+    };
+
+    var machineName = machineNames[machineID] || "MachineID inconnu";
+    document.getElementById("machineIDText").innerHTML = "Hello, je suis : " + machineName + " Butler " + machineID + "!";
+    document.getElementById("liteContent").style.display = "block";
+}
+
 
         // 动态设置Normal版本的链接
         window.onload = function() {
