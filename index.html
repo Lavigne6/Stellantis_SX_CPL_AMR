@@ -52,7 +52,7 @@
 
         <ul>
             <h3>Les tags</h3>
-            <img src="Photo_tag.jpeg" alt="Image 2" width="500px">
+            <img src="Photo_tag.jpeg" alt="Image 2" width="100px">
             <li>Vous voyez ces QR codes partout dans notre atelier?</li>
             <li>Ils servent à indiquer les chemins et la direction aux butler.</li>
         </ul>
@@ -110,11 +110,12 @@
         // Fonction pour déplacer l'image de manière aléatoire
         function moveImageRandomly() {
             var image = document.getElementById("movingImage");
-            var x = Math.random() * (window.innerWidth - 100);
-            var y = Math.random() * 50;  // Limite le déplacement en haut de la page
+            var x = Math.random() * (window.innerWidth - 100);  // Déplacement sur toute la largeur
+            var y = Math.random() * (window.innerHeight - 100); // Déplacement sur toute la hauteur
             image.style.left = x + "px";
             image.style.top = y + "px";
         }
+
 
         // Fonction pour capturer l'image et afficher le message
         function catchImage() {
