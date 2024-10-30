@@ -4,14 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Choisir une version</title>
+    <style>
+        /* Styles pour l'image en haut */
+        #movingImage {
+            position: absolute;
+            top: 0;
+            display: none; /* Masquée par défaut */
+            width: 100px;
+            height: auto;
+            cursor: pointer;
+            transition: all 1s ease;
+        }
+    </style>
 </head>
 <body>
     <h1>Bienvenue chez Stellantis Sochaux !</h1>
     <p>Veuillez choisir la version de l'application :</p>
 
+    <!-- Image avec déplacement aléatoire -->
+    <img id="movingImage" src="Butler.jpg" alt="Image aléatoire" onclick="catchImage()">
+
     <!-- Normal Version -->
     <a href="https://apps.powerapps.com/play/1c66268e-c967-4e77-82e1-1e303906f884" id="normalVersionLink">
-        <button>Version Powerapp(accès restreint)</button>
+        <button>Version Powerapp (accès restreint)</button>
     </a>
 
     <!-- Lite Version -->
@@ -19,7 +34,6 @@
 
     <!-- Lite Content (hidden by default) -->
     <div id="liteContent" style="display:none;">
-        <!-- This line will dynamically show "Hello, je suis MachineID" -->
         <h3 id="machineIDText">Hello, je suis : </h3>
 
         <ul>
@@ -36,8 +50,6 @@
             <p>Distance maximale: 1km!</p>
         </ul>
 
-
-
         <ul>
             <h3>Les tags</h3>
             <img src="Photo_tag.jpeg" alt="Image 2" width="500px">
@@ -45,8 +57,6 @@
             <li>Ils servent à indiquer les chemins et la direction aux butler.</li>
         </ul>
 
-
-        
         <h3>Contact</h3>
         <p><strong>Chef de projet :</strong></p>
         <p>Simon Poquet 0668241247</p>
@@ -57,43 +67,65 @@
     </div>
 
     <script>
-        // 获取URL中的MachineID参数
+        // Fonction pour récupérer le paramètre URL "MachineID"
         function getQueryParam(param) {
             let urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(param);
         }
 
-        // 显示Lite内容并插入MachineID
-function showLite() {
-    var machineID = getQueryParam("MachineID");
-    var machineNames = {
-        35: "Seize",
-        40: "Adil",
-        42: "Lilouch",
-        57: "Saoudi",
-        58: "Emilie",
-        66: "Haiquan",
-        70: "Stéphane",
-        81: "Merguez",
-        83: "Mickael",
-        88: "Guofeng",
-        89: "Grincheu",
-        98: "Rogerio",
-        100: "Simon",
-        102: "Le magicien",
-        121: "Caro",
-        128: "Sam",
-        142: "Bayram",
-        164: "Mickey"
-    };
+        // Affichage de la version Lite avec MachineID personnalisé et image en mouvement
+        function showLite() {
+            var machineID = getQueryParam("MachineID");
+            var machineNames = {
+                35: "Seize",
+                40: "Adil",
+                42: "Lilouch",
+                57: "Saoudi",
+                58: "Emilie",
+                66: "Haiquan",
+                70: "Stéphane",
+                81: "Merguez",
+                83: "Mickael",
+                88: "Guofeng",
+                89: "Grincheu",
+                98: "Rogerio",
+                100: "Simon",
+                102: "Le magicien",
+                121: "Caro",
+                128: "Sam",
+                142: "Bayram",
+                164: "Mickey"
+            };
 
-    var machineName = machineNames[machineID] || "MachineID inconnu";
-    document.getElementById("machineIDText").innerHTML = "Hello, je suis : " + machineName + " Butler " + machineID + "!";
-    document.getElementById("liteContent").style.display = "block";
-}
+            var machineName = machineNames[machineID] || "MachineID inconnu";
+            document.getElementById("machineIDText").innerHTML = "Hello, je suis : " + machineName + " Butler " + machineID + "!";
+            document.getElementById("liteContent").style.display = "block";
 
+            // Affiche et démarre le mouvement de l'image
+            var image = document.getElementById("movingImage");
+            image.style.display = "block";
+            setInterval(moveImageRandomly, 2000);
+        }
 
-        // 动态设置Normal版本的链接
+        // Fonction pour déplacer l'image de manière aléatoire
+        function moveImageRandomly() {
+            var image = document.getElementById("movingImage");
+            var x = Math.random() * (window.innerWidth - 100);
+            var y = Math.random() * 50;  // Limite le déplacement en haut de la page
+            image.style.left = x + "px";
+            image.style.top = y + "px";
+        }
+
+        // Fonction pour capturer l'image et afficher le message
+        function catchImage() {
+            var image = document.getElementById("movingImage");
+            var machineID = getQueryParam("MachineID");
+            var machineName = document.getElementById("machineIDText").textContent.split(":")[1].trim();
+            alert(machineName + " attrapé !");
+            image.style.display = "none";
+        }
+
+        // Dynamiser le lien pour la version normale
         window.onload = function() {
             var machineID = getQueryParam("MachineID");
             document.getElementById("normalVersionLink").href = "https://apps.powerapps.com/play/1c66268e-c967-4e77-82e1-1e303906f884?MachineID=" + machineID;
