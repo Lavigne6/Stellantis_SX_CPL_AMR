@@ -20,11 +20,51 @@
             display: none; /* Masqué par défaut */
             margin-top: 20px;
         }
+        /* Styles pour la boîte modale */
+        #modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        #modalContent {
+            background-color: white;
+            padding: 20px;
+            max-width: 500px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        #modalContent h2 {
+            color: red;
+        }
+        #modal img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
-    <h1>Bienvenue chez Stellantis Sochaux !</h1>
-    <p>Veuillez choisir la version de l'application :</p>
+    <!-- Boîte modale -->
+    <div id="modal">
+        <div id="modalContent">
+            <h2>Attention !</h2>
+	    <img src="butlerlidar.png" alt="Image d'avertissement 3">
+            <p><strong>SAUF EN CAS DE DANGER</strong><br>Ne pas couper la route d'un butler cela entraînera un arrêt d'urgence du robot !</p>
+            <img src="Regle passage.png" alt="Image d'avertissement 1">
+            <p>Ne pas taper le bumper autour des butlers, cela entraînera également un arrêt d'urgence du robot !</p>
+            <img src="bumper.png" alt="Image d'avertissement 2">
+            <button onclick="closeModal()">J'ai pris en compte de ces infos</button>
+        </div>
+    </div>
+
+    <h1>Bienvenue chez Stellantis Sochaux ! <img src="Logo_stellantis.png" alt="Image 3" width="100px"> </h1>
 
     <!-- Image avec déplacement aléatoire -->
     <img id="movingImage" src="Butler.jpg" alt="Image aléatoire" onclick="catchImage()">
@@ -33,9 +73,6 @@
     <a href="https://apps.powerapps.com/play/1c66268e-c967-4e77-82e1-1e303906f884" id="normalVersionLink">
         <button>Version Powerapp (accès restreint)</button>
     </a>
-
-    <!-- Lite Version -->
-    <button onclick="showLite()">Version Lite</button>
 
     <!-- Auto dépannage Button -->
     <button onclick="showDepannageOptions()">Auto Dépannage</button>
@@ -51,8 +88,8 @@
         <button onclick="handleDepannage()">Aller</button>
     </div>
 
-    <!-- Lite Content (hidden by default) -->
-    <div id="liteContent" style="display:none;">
+    <!-- Lite Content (visible par défaut) -->
+    <div id="liteContent">
         <h3 id="machineIDText">Hello, je suis : </h3>
 
         <ul>
@@ -86,6 +123,11 @@
     </div>
 
     <script>
+        // Fonction pour fermer la boîte modale
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+
         // Fonction pour récupérer le paramètre URL "MachineID"
         function getQueryParam(param) {
             let urlParams = new URLSearchParams(window.location.search);
@@ -118,7 +160,6 @@
 
             var machineName = machineNames[machineID] || "MachineID inconnu";
             document.getElementById("machineIDText").innerHTML = "Hello, je suis : " + machineName + " Butler " + machineID + "!";
-            document.getElementById("liteContent").style.display = "block";
 
             // Affiche et démarre le mouvement de l'image
             var image = document.getElementById("movingImage");
@@ -162,8 +203,9 @@
             }
         }
 
-        // Dynamiser le lien pour la version normale
+        // Charger la version Lite au chargement de la page
         window.onload = function() {
+            showLite();  // Appel direct de showLite
             var machineID = getQueryParam("MachineID");
             document.getElementById("normalVersionLink").href = "https://apps.powerapps.com/play/1c66268e-c967-4e77-82e1-1e303906f884?MachineID=" + machineID;
         }
