@@ -7,6 +7,7 @@
     <style>
         body {
             background-color: rgb(0, 0, 0);
+            color: white;
         }
         /* Styles pour l'image en haut */
         #movingImage {
@@ -34,6 +35,9 @@
 
     <!-- Lite Version -->
     <button onclick="showLite()">Version Lite</button>
+
+    <!-- Auto dépannage Button -->
+    <button onclick="autoDepannage()">Auto Dépannage</button>
 
     <!-- Lite Content (hidden by default) -->
     <div id="liteContent" style="display:none;">
@@ -119,15 +123,26 @@
             image.style.top = y + "px";
         }
 
-
-        // Fonction pour capturer l'image et afficher le message
+        // Fonction pour capturer l'image et masquer
         function catchImage() {
             var image = document.getElementById("movingImage");
-            var machineID = getQueryParam("MachineID");
-            var machineName = document.getElementById("machineIDText").textContent.split(":")[1].trim();
-            alert(machineName + " attrapé !");
             image.style.display = "none";
         }
+
+        // Fonction pour l'auto dépannage
+        function autoDepannage() {
+            // Options pour le dépannage
+            var choix = prompt("Sélectionnez le type de problème:\n1. Lumière rouge\n2. Lumière bleue clignotante");
+
+            // Rediriger selon le choix
+            //if (choix === "1") {
+               // window.location.href = "chemin/vers/lumiere_rouge.pdf";
+          //  } else if (choix === "2") {
+           //     window.location.href = "chemin/vers/lumiere_bleue_clignotante.pdf";
+       //     } else {
+       //         alert("Choix invalide, veuillez réessayer.");
+     //       }
+     //   }
 
         // Dynamiser le lien pour la version normale
         window.onload = function() {
