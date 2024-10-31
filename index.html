@@ -135,9 +135,12 @@
             image.style.top = y + "px";
         }
 
-        // Fonction pour capturer l'image et masquer
+        // Fonction pour capturer l'image et afficher le message
         function catchImage() {
             var image = document.getElementById("movingImage");
+            var machineID = getQueryParam("MachineID");
+            var machineName = document.getElementById("machineIDText").textContent.split(":")[1].trim();
+            alert(machineName + " attrapé !");
             image.style.display = "none";
         }
 
