@@ -15,6 +15,11 @@
             cursor: pointer;
             transition: all 1s ease;
         }
+        /* Style pour la boîte de sélection */
+        #depannageOptions {
+            display: none; /* Masqué par défaut */
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -33,7 +38,18 @@
     <button onclick="showLite()">Version Lite</button>
 
     <!-- Auto dépannage Button -->
-    <button onclick="autoDepannage()">Auto Dépannage</button>
+    <button onclick="showDepannageOptions()">Auto Dépannage</button>
+
+    <!-- Sélection dépannage -->
+    <div id="depannageOptions">
+        <label for="problemSelect">Sélectionnez le type de problème :</label>
+        <select id="problemSelect">
+            <option value="">-- Choisir une option --</option>
+            <option value="1">Lumière rouge</option>
+            <option value="2">Lumière bleue clignotante</option>
+        </select>
+        <button onclick="handleDepannage()">Aller</button>
+    </div>
 
     <!-- Lite Content (hidden by default) -->
     <div id="liteContent" style="display:none;">
@@ -125,18 +141,21 @@
             image.style.display = "none";
         }
 
-        // Fonction pour l'auto dépannage
-        function autoDepannage() {
-            // Options pour le dépannage
-            var choix = prompt("Sélectionnez le type de problème:\n1. Lumière rouge\n2. Lumière bleue clignotante");
+        // Fonction pour afficher les options de dépannage
+        function showDepannageOptions() {
+            document.getElementById("depannageOptions").style.display = "block";
+        }
 
-            // Rediriger selon le choix
-            if (choix === "1") {
+        // Fonction pour rediriger vers le bon PDF selon le choix
+        function handleDepannage() {
+            var problemSelect = document.getElementById("problemSelect").value;
+            
+            if (problemSelect === "1") {
                 window.location.href = "Leçon ponctuelle _ Lumière rouge.pdf";
-            } else if (choix === "2") {
-                window.location.href = "Leçon ponctuelle _ Lumière rouge.pdf";
+            } else if (problemSelect === "2") {
+                window.location.href = "Leçon ponctuelle _ Lumière jaune et violette.pdf";
             } else {
-                alert("Choix invalide, veuillez réessayer.");
+                alert("Veuillez sélectionner une option valide.");
             }
         }
 
