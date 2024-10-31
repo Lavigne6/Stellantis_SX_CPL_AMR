@@ -60,7 +60,8 @@
             <img src="Regle passage.png" alt="Image d'avertissement 1"width="300px">
             <p>Ne pas taper le bumper autour des butlers, cela entraînera également un arrêt d'urgence du robot !</p>
             <img src="bumper.png" alt="Image d'avertissement 2"width="300px">
-            <button onclick="closeModal()">J'ai pris en compte de ces infos</button>
+            <button onclick="closeModal()" style="font-size: 18px; padding: 10px 20px;">J'ai pris en compte de ces infos</button>
+
         </div>
     </div>
 
@@ -84,6 +85,8 @@
             <option value="">-- Choisir une option --</option>
             <option value="1">Lumière rouge</option>
             <option value="2">Lumière jaune violette</option>
+	    <option value="3">Lumière jaune bleue</option>
+		
         </select>
         <button onclick="handleDepannage()">Aller</button>
     </div>
@@ -198,6 +201,8 @@
                 window.location.href = "Leçon ponctuelle _ Lumière rouge.pdf";
             } else if (problemSelect === "2") {
                 window.location.href = "Leçon ponctuelle _ Lumière jaune et violette.pdf";
+            } else if (problemSelect === "3") {
+                window.location.href = "Leçon ponctuelle _ Lumière bleue.pdf";
             } else {
                 alert("Veuillez sélectionner une option valide.");
             }
