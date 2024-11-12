@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 60%;
+            position: relative;
+        }
+        .step {
+            background-color: #2e4a7d;
+            color: white;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 3s ease-in-out;
+        }
+        .arrow {
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 20px solid #c8d1e4;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 1s ease-in-out;
+        }
+        .step.visible, .arrow.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div id="animationContainer" class="container">
+        <div class="step" id="step1">Autocall décompte la consommation théorique</div>
+        <div class="arrow" id="arrow1"></div>
+        <div class="step" id="step2">Une fois le seuil atteint (12 véhicules pour GV/60 véhicules pour PC), un cariste reçoit une alerte et charge un butler</div>
+        <div class="arrow" id="arrow2"></div>
+        <div class="step" id="step3">Le butler vient jusqu’au point de livraison</div>
+        <div class="arrow" id="arrow3"></div>
+        <div class="step" id="step4">L’opérateur appuie sur le bouton callbox lorsque son conteneur est vide, Autocall est remis à 0</div>
+        <div class="arrow" id="arrow4"></div>
+        <div class="step" id="step5">Le butler procède au changement plein / vide</div>
+    </div>
+
+    <script>
+        // Function to trigger the animation
+        function startAnimation() {
+            const steps = document.querySelectorAll(".step");
+            const arrows = document.querySelectorAll(".arrow");
+
+            // Reset animation states
+            steps.forEach(step => step.classList.remove("visible"));
+            arrows.forEach(arrow => arrow.classList.remove("visible"));
+
+            steps.forEach((step, index) => {
+                setTimeout(() => {
+                    step.classList.add("visible");
+                    if (arrows[index]) {
+                        arrows[index].classList.add("visible");
+                    }
+                }, index * 4000); // Delay of 4 seconds between each step
+            });
+
+            // Restart animation after 6 seconds of wait
+            setTimeout(() => {
+                startAnimation();
+            }, steps.length * 4000 + 6000); // Total animation time + 6 seconds wait
+        }
+
+        // Check if animation should start
+        document.addEventListener("DOMContentLoaded", () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get("showAnimation") === "true") {
+                startAnimation();
+            }
+        });
+    </script>
+</body>
+</html>
