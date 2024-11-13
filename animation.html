@@ -27,6 +27,15 @@
             opacity: 0;
             transform: translateY(20px);
             transition: all 3s ease-in-out;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .step img {
+            width: 80px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         .arrow {
             width: 0;
@@ -47,15 +56,30 @@
 </head>
 <body>
     <div id="animationContainer" class="container">
-        <div class="step" id="step1">Quand l'opérateur prend une pièce, le système Autocall décompte la consommation théorique</div>
+        <div class="step" id="step1">
+            <img src="image1.jpg" alt="Image 1">
+            Quand l'opérateur prend une pièce, le système Autocall décompte la consommation théorique
+        </div>
         <div class="arrow" id="arrow1"></div>
-        <div class="step" id="step2">Une fois le seuil atteint (12 véhicules pour GV/60 véhicules pour PC), un cariste reçoit une alerte et charge un butler</div>
+        <div class="step" id="step2">
+            <img src="image2.jpg" alt="Image 2">
+            Une fois le seuil atteint (12 véhicules pour GV/60 véhicules pour PC), un cariste reçoit une alerte et charge un butler
+        </div>
         <div class="arrow" id="arrow2"></div>
-        <div class="step" id="step3">Le butler vient jusqu’au point de livraison</div>
+        <div class="step" id="step3">
+            <img src="image3.jpg" alt="Image 3">
+            Le butler vient jusqu’au point de livraison
+        </div>
         <div class="arrow" id="arrow3"></div>
-        <div class="step" id="step4">L’opérateur appuie sur le bouton callbox lorsque son conteneur est vide, Autocall est remis à 0</div>
+        <div class="step" id="step4">
+            <img src="image4.jpg" alt="Image 4">
+            L’opérateur appuie sur le bouton callbox lorsque son conteneur est vide, Autocall est remis à 0
+        </div>
         <div class="arrow" id="arrow4"></div>
-        <div class="step" id="step5">Le butler procède au changement plein / vide</div>
+        <div class="step" id="step5">
+            <img src="image5.jpg" alt="Image 5">
+            Le butler procède au changement plein / vide
+        </div>
     </div>
 
     <script>
