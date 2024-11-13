@@ -103,33 +103,34 @@
             <li>Suivant un cheminement de QR codes (tags) au sol, lus par caméra</li>
             <li>Détection des obstacles par caméra et parechocs (pneumatiques)</li>
             <li>Se recharge sur des bornes électriques</li>
-            <h3>Zones de déplacement</h3>
-            <img src="Layout.png" alt="Image 1" width="500px">
-            <p>Nous roulons sur les MV1/2/3/4/5, HC1 + toutes les zones de kit, jusqu'au TK!</p>
-            <p>Distance maximale: 1km!</p>
-        </ul>
+	<!-- Zones de déplacement -->
+	<h3 id="zonesTitle" style="cursor: pointer;" onclick="toggleContent('zonesContent')">Zones de déplacement</h3>
+	<div id="zonesContent" style="display: none;">
+    		<img src="Layout.png" alt="Image 1" width="500px">
+    		<p>Nous roulons sur les MV1/2/3/4/5, HC1 + toutes les zones de kit, jusqu'au TK!</p>
+    		<p>Distance maximale: 1km!</p>
+	</div>
 
-        <ul>
-            <h3>Les tags</h3>
-            <img src="Photo_tag.jpeg" alt="Image 2" width="100px">
-            <li>Vous voyez ces QR codes partout dans notre atelier?</li>
-            <li>Ils servent à indiquer les chemins et la direction aux butler.</li>
-        </ul>
-<h3>
-    <a href="animation.html?showAnimation=true" style="cursor: pointer; text-decoration: none; color: blue;">
-        Comment est-ce qu'on donne les commandes aux butlers?
-    </a>
-</h3>
+        <!-- Les tags -->
+	<h3 id="tagsTitle" style="cursor: pointer;" onclick="toggleContent('tagsContent')">Les tags</h3>
+	<div id="tagsContent" style="display: none;">
+    		<img src="Photo_tag.jpeg" alt="Image 2" width="100px">
+    		<ul>
+        		<li>Vous voyez ces QR codes partout dans notre atelier?</li>
+        		<li>Ils servent à indiquer les chemins et la direction aux butler.</li>
+    		</ul>
+	</div>
 
-        <h3>Contact</h3>
-        <p><strong>Chef de projet :</strong></p>
-        <p>Simon Poquet 0668241247</p>
-        <p><strong>Techniciens :</strong></p>
-        <p>Gary Marinot 0672831967, Sezer Binen 0637964422</p>
-        <p><strong>Stagiaire :</strong></p>
-        <p>Haiquan Liu 0669642070</p>
-    </div>
-
+        <!-- Contact -->
+	<h3 id="contactTitle" style="cursor: pointer;" onclick="toggleContent('contactContent')">Contact</h3>
+	<div id="contactContent" style="display: none;">
+    		<p><strong>Chef de projet :</strong></p>
+    		<p>Simon Poquet 0668241247</p>
+    		<p><strong>Techniciens :</strong></p>
+    		<p>Gary Marinot 0672831967, Sezer Binen 0637964422</p>
+    		<p><strong>Stagiaire :</strong></p>
+    		<p>Haiquan Liu 0669642070</p>
+	</div>
     <script>
         // Fonction pour fermer la boîte modale
         function closeModal() {
@@ -212,6 +213,16 @@
                 alert("Veuillez sélectionner une option valide.");
             }
         }
+	// Fonction pour basculer la visibilité du contenu
+	function toggleContent(contentId) {
+    		const content = document.getElementById(contentId);
+    		if (content.style.display === "none") {
+        		content.style.display = "block";
+    		} else {
+        		content.style.display = "none";
+    		}
+	}
+
 
         // Charger la version Lite au chargement de la page
         window.onload = function() {
