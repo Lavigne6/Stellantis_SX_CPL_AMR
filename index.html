@@ -55,7 +55,7 @@
                 transform: scale(1); /* 初始大小 */
             }
             50% {
-                transform: scale(1.1); /* 放大到110% */
+                transform: scale(1.5); /* 放大到110% */
             }
             100% {
                 transform: scale(1); /* 返回原始大小 */
@@ -69,13 +69,13 @@
             transition: transform 0.2s ease-in-out; /* 平滑缩放过渡 */
             cursor: pointer;
             text-decoration: underline;
-            color: blue;
+            color: red;
         }
 
         /* 悬停时放大效果 */
         .animated-flash:hover {
             transform: scale(1.15); /* 鼠标悬停时放大到115% */
-            color: darkblue; /* 改变颜色，增强交互感 */
+            color: darkred; /* 改变颜色，增强交互感 */
         }
     </style>
 </head>
@@ -270,7 +270,7 @@
         }
 	// Fonction pour ouvrir le fichier PDF "flash.pdf"
         function openFlashPDF() {
-            window.open('flash.pdf', '_blank'); // Ouvre le fichier PDF dans un nouvel onglet
+            window.open('Flash.pdf', '_blank'); // Ouvre le fichier PDF dans un nouvel onglet
         }
     </script>
 </body>
