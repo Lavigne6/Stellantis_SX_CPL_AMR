@@ -49,6 +49,34 @@
             height: auto;
             margin-top: 10px;
         }
+	        /* Animation keyframes */
+        @keyframes pulseEffect {
+            0% {
+                transform: scale(1); /* 初始大小 */
+            }
+            50% {
+                transform: scale(1.1); /* 放大到110% */
+            }
+            100% {
+                transform: scale(1); /* 返回原始大小 */
+            }
+        }
+
+        /* 应用到标题的动画样式 */
+        .animated-flash {
+            display: inline-block;
+            animation: pulseEffect 1.5s infinite; /* 动画持续时间1.5秒，无限循环 */
+            transition: transform 0.2s ease-in-out; /* 平滑缩放过渡 */
+            cursor: pointer;
+            text-decoration: underline;
+            color: blue;
+        }
+
+        /* 悬停时放大效果 */
+        .animated-flash:hover {
+            transform: scale(1.15); /* 鼠标悬停时放大到115% */
+            color: darkblue; /* 改变颜色，增强交互感 */
+        }
     </style>
 </head>
 <body>
@@ -104,6 +132,8 @@
             <li>Suivant un cheminement de QR codes (tags) au sol, lus par caméra</li>
             <li>Détection des obstacles par caméra et parechocs (pneumatiques)</li>
             <li>Se recharge sur des bornes électriques</li>
+    <!-- LE FLASH RECENT -->
+    <h3 id="flashTitle" class="animated-flash" onclick="openFlashPDF()">LE FLASH RECENT</h3>
 
 	<h3>
     		<a href="animation.html?showAnimation=true" style="cursor: pointer; text-decoration: none; color: blue;">
@@ -237,6 +267,10 @@
             showLite();  // Appel direct de showLite
             var machineID = getQueryParam("MachineID");
             document.getElementById("normalVersionLink").href = "https://apps.powerapps.com/play/1c66268e-c967-4e77-82e1-1e303906f884?MachineID=" + machineID;
+        }
+	// Fonction pour ouvrir le fichier PDF "flash.pdf"
+        function openFlashPDF() {
+            window.open('flash.pdf', '_blank'); // Ouvre le fichier PDF dans un nouvel onglet
         }
     </script>
 </body>
