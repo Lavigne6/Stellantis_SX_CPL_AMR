@@ -99,13 +99,13 @@
                     if (arrows[index]) {
                         arrows[index].classList.add("visible");
                     }
-                }, index * 4000); // Delay of 4 seconds between each step
+                }, index * 6000); // Delay of 4 seconds between each step
             });
 
             // Restart animation after 6 seconds of wait
             setTimeout(() => {
                 startAnimation();
-            }, steps.length * 4000 + 6000); // Total animation time + 6 seconds wait
+            }, steps.length * 6000 + 6000); // Total animation time + 6 seconds wait
         }
 
         // Check if animation should start
